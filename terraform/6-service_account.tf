@@ -25,6 +25,17 @@ resource "google_project_iam_binding" "role_binding1" {
     "serviceAccount:${google_service_account.vm_service_account.email}"
   ]
 }
+resource "google_project_iam_binding" "role_binding2" {
+  project = "active-sun-337308"
+  role    = "roles/container.developer"
+  depends_on = [
+    google_service_account.vm_service_account
+  ]
+  members = [
+    "serviceAccount:${google_service_account.vm_service_account.email}"
+  ]
+}
+
 
 
 ###### Service Account for GKE ######
