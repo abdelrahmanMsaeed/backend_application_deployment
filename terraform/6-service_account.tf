@@ -24,7 +24,16 @@ resource "google_service_account" "sa_gke" {
   display_name = "service-acount-for-gke-project"
 }
 
-
+resource "google_project_iam_binding" "sa_gke2" {
+  project = "active-sun-337308"
+  role    = "roles/container.admin"
+  depends_on = [
+    google_service_account.sa_gke
+  ]
+  members = [
+    "serviceAccount:${google_service_account.sa_gke.email}"
+  ]
+}
 resource "google_project_iam_binding" "sa_gke1" {
   project = "active-sun-337308"
   role    = "roles/storage.admin"
