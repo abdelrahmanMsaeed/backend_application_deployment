@@ -3,6 +3,7 @@ resource "google_service_account" "vm_service_account" {
   display_name = "service-acount-for-private-vm"
 }
 
+
 resource "google_project_iam_binding" "role_binding" {
   project = "active-sun-337308"
   role    = "roles/container.admin"
