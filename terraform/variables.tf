@@ -36,3 +36,6 @@ variable "private_cidr" {
 variable "nat_name" {
     type= string
 }
+variable "vm_name" {
+    type = string
+  }

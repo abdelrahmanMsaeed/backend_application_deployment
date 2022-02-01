@@ -26,7 +26,7 @@ resource "google_compute_subnetwork" "private_subnet" {
 
 # firewall
 resource "google_compute_firewall" "rules" {
-  project     = var.project_name
+  project     = var.project_id
   name        = "allowtcprules"
   network     = var.network_name
   depends_on = [google_compute_network.vpc_network]
