@@ -3,19 +3,13 @@ resource "google_container_cluster" "project-cluster" {
   name       = "project-cluster"
   location   = var.region
   network    = google_compute_network.vpc_network.id
-  subnetwork = google_compute_subnetwork.private_subnet
+  subnetwork = google_compute_subnetwork.private_subnet.id
   depends_on = [google_compute_subnetwork.private_subnet]
  # creating the least possible node pool
   remove_default_node_pool = true
   initial_node_count       = 1
   
-  private_cluster_config {
-    master_ipv4_cidr_block  = "172.16.0.0/28"
-    enable_private_nodes    = true
-    enable_private_endpoint = true
-  }
-
-  master_authorized_networks_config {
+     master_authorized_networks_config {
     cidr_blocks {
       cidr_block = "10.0.0.0/16"
     }
@@ -33,8 +27,6 @@ resource "google_container_cluster" "project-cluster" {
       enabled = false
     }
   }
-}
-
 resource "google_container_node_pool" "project-nodes" {
   name       = "final-node-pool"
   location   = var.region
