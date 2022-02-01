@@ -45,7 +45,7 @@ resource "google_container_node_pool" "project-nodes" {
     preemptible  = false
     machine_type = "e2-medium"
 
-    service_account = "mmoselhy-devops@active-sun-337308.iam.gserviceaccount.com "
+    service_account = google_service_account.sa_gke
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
