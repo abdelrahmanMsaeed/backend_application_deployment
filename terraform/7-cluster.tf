@@ -2,9 +2,9 @@
 resource "google_container_cluster" "project-cluster" {
   name       = "project-cluster"
   location   = var.region
-  network    = google_compute_network.project-vpc_network.id
-  subnetwork = google_compute_subnetwork.project-private-subnet.id
-  depends_on = [google_compute_subnet.private_subnet]
+  network    = google_compute_network.vpc_network.id
+  subnetwork = google_compute_subnetwork.private_subnet
+  depends_on = [google_compute_subnetwork.private_subnet]
  # creating the least possible node pool
   remove_default_node_pool = true
   initial_node_count       = 1
