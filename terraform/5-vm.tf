@@ -19,8 +19,8 @@ resource "google_compute_instance" "VM" {
   }
 
   metadata_startup_script = <<SCRIPT
-    sudo apt-get update ; sudo apt -y install ansible
-    SCRIPT
+ sudo apt-get update ; sudo apt-get -y install ansible
+ SCRIPT
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
