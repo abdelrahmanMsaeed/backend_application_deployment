@@ -9,7 +9,7 @@ resource "google_compute_instance" "VM" {
     }
   }
 
-depends_on = [
+    depends_on = [
     # google_service_account.sa_vm,
     google_compute_subnetwork.public_subnet
   ]
@@ -17,6 +17,8 @@ depends_on = [
     network    = google_compute_network.vpc_network.id
     subnetwork = google_compute_subnetwork.public_subnet.id
   }
+
+  #metadata_startup_script = "sudo apt-get update; sudo apt install ansible"
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
