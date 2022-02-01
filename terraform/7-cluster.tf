@@ -27,7 +27,7 @@ resource "google_container_cluster" "project-cluster" {
       enabled = false
     }
   }
-}
+} 
 resource "google_container_node_pool" "project-nodes" {
   name       = "final-node-pool"
   location   = var.region
@@ -38,7 +38,7 @@ resource "google_container_node_pool" "project-nodes" {
     preemptible  = false
     machine_type = "e2-medium"
 
-    service_account = google_service_account.sa_gke
+    service_account = google_service_account.sa_gke.email
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]

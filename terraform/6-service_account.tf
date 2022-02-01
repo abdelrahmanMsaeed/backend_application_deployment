@@ -15,6 +15,16 @@ resource "google_project_iam_binding" "role_binding" {
   ]
 }
 
+resource "google_project_iam_binding" "role_binding1" {
+  project = "active-sun-337308"
+  role    = "roles/container.clusterAdmin"
+  depends_on = [
+    google_service_account.vm_service_account
+  ]
+  members = [
+    "serviceAccount:${google_service_account.vm_service_account.email}"
+  ]
+}
 
 
 ###### Service Account for GKE ######
