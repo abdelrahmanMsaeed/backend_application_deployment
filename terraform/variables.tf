@@ -32,3 +32,7 @@ variable "public_cidr" {
 variable "private_cidr" {
     type = string
 }
+
+variable "nat_name" {
+    type= string
+}
