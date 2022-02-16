@@ -19,10 +19,10 @@ pipeline {
     stage('deploy using k8s') {
       steps {
         script {
-        withCredentials([file(credentialsId: 'kubeconfig', variable: 'k8s_config')]) {
+        withCredentials([file(credentialsId: 'kuconfig', variable: 'k8sconfig')]) {
           sh """
               gcloud container clusters get-credentials project-cluster --region us-central1 --project active-sun-337308
-              kubectl apply -f . --kubeconfig=$k8s_config
+              kubectl apply -f . --kubeconfig=$k8sconfig
           """
         }
         
