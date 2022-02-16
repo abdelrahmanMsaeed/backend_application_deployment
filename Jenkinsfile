@@ -21,6 +21,7 @@ pipeline {
         script {
         withCredentials([file(credentialsId: 'kubeconfig', variable: 'k8s_config')]) {
           sh """
+              gcloud container clusters get-credentials project-cluster --region us-central1 --project active-sun-337308
               kubectl apply -f . --kubeconfig=$k8s_config
           """
         }
