@@ -5,7 +5,7 @@ metadata:
   namespace: prod
 spec:
   selector:
-  app: app-prod
+    app: app-prod
   ports:
     - protocol: TCP
       port: 80
