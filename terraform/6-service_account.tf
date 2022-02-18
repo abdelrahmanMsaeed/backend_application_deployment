@@ -46,7 +46,26 @@ resource "google_project_iam_binding" "role_binding2" {
     "serviceAccount:${google_service_account.vm_service_account.email}"
   ]
 }
-
+resource "google_project_iam_binding" "role_binding3" {
+  project = "active-sun-337308"
+  role    = "roles/storage.admin"
+  depends_on = [
+    google_service_account.vm_service_account
+  ]
+  members = [
+    "serviceAccount:${google_service_account.vm_service_account.email}"
+  ]
+}
+resource "google_project_iam_binding" "role_binding4" {
+  project = "active-sun-337308"
+  role    = "roles/storage.objectAdmin"
+  depends_on = [
+    google_service_account.vm_service_account
+  ]
+  members = [
+    "serviceAccount:${google_service_account.vm_service_account.email}"
+  ]
+}
 
 
 ###### Service Account for GKE ######
