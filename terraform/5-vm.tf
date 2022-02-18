@@ -34,7 +34,7 @@ resource "google_compute_instance" "VM" {
     sudo pip install kubernetes ;
     gsutil -m cp -r gs://test-graduation-project/* /home/ansible  ;   
     sudo runuser -l ansible -c 'ansible-playbook /home/ansible/project_role/test.yml' ;
-    
+    echo hello
  SCRIPT
 
  
