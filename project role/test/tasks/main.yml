@@ -1,0 +1,35 @@
+- name: "Connect to cluster (update kubeconfig)"
+  shell: "gcloud container clusters get-credentials project-cluster --region us-central1 --project active-sun-337308"
+
+- name: Create a k8s namespace
+  kubernetes.core.k8s:
+    name: jenkins
+    api_version: v1
+    kind: Namespace
+    state: present
+- name: Create a Deployment by reading the definition from a local file
+  kubernetes.core.k8s:
+    state: present
+    src: /home/ansible/project_role/test/deployment/jendeploy.yml
+
+
+- name: Create a service2 by reading the definition from a local file
+  kubernetes.core.k8s:
+    state: present
+    src: /home/ansible/project_role/test/deployment/jenservice.yml
+
+
+- name: Create a service1 by reading the definition from a local file
+  kubernetes.core.k8s:
+    state: present
+    src: /home/ansible/project_role/test/deployment/clusterip-jenkins.yaml
+    
+- name: Create a slave agent by reading the definition from a local file
+  kubernetes.core.k8s:
+    state: present
+    src: /home/ansible/project_role/test/deployment/slave_agent.yaml
+    
+- name: Create a  slave service1 by reading the definition from a local file
+  kubernetes.core.k8s:
+    state: present
+    src: /home/ansible/project_role/test/deployment/slave-service.yaml    
