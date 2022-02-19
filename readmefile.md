@@ -1,55 +1,53 @@
-**project**
---
-***
-*build and deploy application using some tools like docker,kubernetes ,ansible , jenkins and terraform*
-***
-**docker**
--
-```
-writing docker file 
-build container image from dockerfile
-running the container image
-```
+# Project
 
-**kubernetes**
---
-```
-- writing deployment file of jenkins 
-- writing deployment file of application
-- writing service file of jenkins
-- writing service file of application 
-```
-***
-**terraform**
--
- ```
- building the infrastrcure 
- - creating vpc network
- - creating 2 subnets
- - creating natgatway
- - creating VM instance 
- - creating cluster
- - creating firewall
- - creating service account
- - writing script to install ansible 
- and running all the .tf file
 
- ```
- **ansible**
--
-```
-- install module kubernetes.core.k8s from ansible galaxy
-- writing palybook to run jenkins  
-```
-**jenkins**
--
-```
-- creating jenkins file
-- creating pipeline
-```
+Deploy backend application on kubernetes cluster using CI/CD jenkins pipeline.
 
- -
- [CONNECT MY REPO](https://github.com/abdelrahmanMsaeed/backend_application_deployment.git)
+# Setup
+* Build simple web application.
+* Build full infrastructure with terraform
+* Run jnkins master and agent on kubernets using ansible
+* Build CI/CD pipeline to build web application's image, push it and deliver the application to production.
+
+## Docker 
+The Dockerfile for the application will be build and pushed to image repo during the CI.
+
+## Terraform
+
+ ### The infrastrcure 
+ - VPC Network
+ - Management subnet
+ - Restricted subnet
+ - Natgatway
+ - VM instance 
+ - Fully private k8s cluster
+ - Writing script to install ansible 
+
+```bash
+terraform init 
+terraform plan 
+terraform apply
+```
+## Ansible
+### Role
+ - Connecting to GCP cluster
+ - Creating new namespace for jenkins
+ - Creating Jenkins's Deployments and Services.
+### notes
+ - Jenkins's yaml files are located in /role/test/deployment
+
+- The Role must be uploaded on cloud storage and deliver storage name in vm's metadata to run it automaticly or you can run it manually.
+
+
+
+## Jenkins
+- Configure jenkins agent and connected it to the master.
+- Create pipeline to build and deploy the application
+
+# In real life application
+- More than one branch for different environments
+- Security test
+
 
  
  
